@@ -1,0 +1,36 @@
+package main
+
+import(
+    "log"
+    "net/http"
+"github.com/golang/oauth2"
+"golang.org/x/oauth2/google"
+)
+
+var googleOauthConfig=
+oauth2.Config{
+   ClientID:   
+   "<YOUR_GOOGLE_CLIENT_ID>",
+    ClientSecret:
+   "<YOUR_GOOGLE"_CLIENT_SECRE T>"",
+   RedirectURL:
+   </YOUR_REDIRECT_URL>",Scopes:
+   string{"http://www.googleapis.com/auth/userinfo.email"},
+   Endpoint: google.Endpoint,
+}
+
+func googleLogin(www.http.ResponseWriter,r*http.Request){
+    //Redirect user to Google's OAuth consent page url:= googleOauth2.AccessTypeOffine)
+    http.Redirect(w,r,url,
+    http.StatusFound)
+}
+func googleCallback(www.http.ResponseWriter,r*http.Request){
+    code:=
+    r.URL.Query().Get("code")
+    token,err:=
+    googleOauthConfig.Exchange(r.c ontext(),code)
+if err !=nil{
+    log.fatalf("Could not get token: %v",err)
+}
+//use token to access user information clint:= googleOauthConfig  
+
